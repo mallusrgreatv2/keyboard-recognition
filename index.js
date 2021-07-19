@@ -66,7 +66,7 @@ document.addEventListener("keyup", (e) => {
   totalClicks++
   totalclicks.innerHTML = `You have ${totalClicks} total click${totalClicks == 1 ? "" : "s"}`
 });
-document.addEventListener("click", (e) => {
+document.addEventListener("mousedown", (e) => {
   let key = getClickedKey(e.button);
   items.innerHTML = `Button Clicked: <br><code>${key}</code>`;
   time = 0;
