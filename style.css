@@ -1,0 +1,33 @@
+@import url("https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@900&display=swap");
+body {
+    font-family: 'Source Code Pro', monospace;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-top: 15%;
+}
+#items {
+    font-size: 65px;
+}
+.no {
+    margin-top: 73px;
+    font-size: 45px;
+}
+code {
+    position: relative;
+}
+code::after {
+    content: "";
+  background-color: gray;
+  opacity: 0.5;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  position: absolute;
+  z-index: -1;
+}
+.total {
+    margin-top: 73px;
+    font-size: 45px;
+}
