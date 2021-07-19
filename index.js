@@ -46,9 +46,20 @@ setInterval(() => {
   time++;
   no.innerHTML = `You haven't clicked for ${time} second${time == 1 ? "" : "s"}.`
 }, 1000);
+let clicks = '';
+let body = $("body");
+
 document.addEventListener("keyup", (e) => {
+  console.log(e.key); 
+  clicks += e.key;
+  console.log(clicks);
+  if(e.key == " ") clicks = '';
+  if(clicks == 'dark') {
+    body.classList.toggle("dark-mode")
+    clicks = '';
+  }
+
   let key = e.key + e.location;
-  console.log(key);
   items.innerHTML = `Button Clicked: <br><code>${keys[key] || e.key}</code>`;
   
   time = 0;
@@ -56,7 +67,6 @@ document.addEventListener("keyup", (e) => {
   totalclicks.innerHTML = `You have ${totalClicks} total click${totalClicks == 1 ? "" : "s"}`
 });
 document.addEventListener("click", (e) => {
-  console.log(e.button);
   let key = getClickedKey(e.button);
   items.innerHTML = `Button Clicked: <br><code>${key}</code>`;
   time = 0;
