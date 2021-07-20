@@ -110,13 +110,17 @@ function getKeys() {
  * @param {String} query
  * @returns Element
  */
-const $ = (query) => document.querySelector(query);
+function $(query) {
+  return document.querySelector(query)
+}
 /**
  *
  * @param {String} query
  * @returns NodeList
  */
-const $$ = (query) => document.querySelectorAll(query);
+function $$(query) {
+  return document.querySelectorAll(query);
+}
 function getClickedKey(EventKey) {
   if (EventKey == 0) return "Left Mouse Button";
   if (EventKey == 1) return "Middle Mouse Button";
