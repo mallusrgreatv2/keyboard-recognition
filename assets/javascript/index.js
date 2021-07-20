@@ -1,44 +1,6 @@
 // TODO: Play audio when milestone reached
 
-
-
-/**
- *
- * @param {String} query
- * @returns Element
- */
-const $ = (query) => document.querySelector(query);
-/**
- *
- * @param {String} query
- * @returns NodeList
- */
-const $$ = (query) => document.querySelectorAll(query);
-const keys = {
-  Escape0: "Esc",
-  Tab0: "Tab",
-  CapsLock0: "Caps Lock",
-  Control0: "Ctrl",
-  " 0": "Space",
-  ArrowDown0: "🔽",
-  ArrowLeft0: "◀",
-  ArrowRight0: "▶",
-  ArrowUp0: "🔼",
-  ContextMenu0: "📰",
-  PrintScreen0: "Prt Sc<br>SysRq",
-  Pause0: "Pause<br>Break",
-  Insert0: "Ins",
-  Delete0: "Del",
-  PageUp0: "PgUp",
-  PageDown0: "PgDn",
-  Meta0: "Windows",
-  Shift1: "Left Shift",
-  Shift2: "Right Shift",
-  Control1: "Left Control",
-  Control2: "Right Control",
-  Alt1: "Left Alt",
-  Alt2: "Right Alt",
-};
+const keys = getKeys();
 const no = $(".no");
 const items = $("#items");
 const global = $("html");
@@ -47,7 +9,7 @@ const totalclicks = $(".total");
 let time = 0;
 let totalClicks = 0;
 setInterval(() => {
-  time++;
+  increment(time);
   no.innerHTML = `You haven't clicked for ${time} second${
     time == 1 ? "" : "s"
   }.`;
@@ -57,11 +19,11 @@ let body = $("body");
 
 document.addEventListener("keyup", (e) => {
   clicks += e.key;
-  if (e.key == " ") clicks = "";
+  if (e.key == " ") clicks = '';
   console.log(clicks);
   if (clicks == "dark") {
     body.classList.toggle("dark-mode");
-    clicks = "";
+    clicks = '';
   }
 
   let key = e.key + e.location;
@@ -69,21 +31,14 @@ document.addEventListener("keyup", (e) => {
 
   time = 0;
   totalClicks++;
-  totalclicks.innerHTML = `You have ${totalClicks} total click${
-    totalClicks == 1 ? "" : "s"
-  }`;
+  totalclicks.innerHTML = `You have ${totalClicks} total click${generateS(totalClicks)}`;
 });
 document.addEventListener("mousedown", (e) => {
   let key = getClickedKey(e.button);
   items.innerHTML = `Button Clicked: <br><code>${key}</code>`;
   time = 0;
   totalClicks++;
-  totalclicks.innerHTML = `You have ${totalClicks} total click${
-    totalClicks == 1 ? "" : "s"
-  }`;
+  totalclicks.innerHTML = `You have ${totalClicks} total click${generateS(totalClicks)}`;
 });
-function getClickedKey(EventKey) {
-  if (EventKey == 0) return "Left Mouse Button";
-  if (EventKey == 1) return "Middle Mouse Button";
-  if (EventKey == 2) return "Right Mouse Button";
-}
+let darktext = $(".darktext");
+darktext.addEventListener("click", e => body.classList.toggle('dark-mode'))
