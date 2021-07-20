@@ -56,10 +56,9 @@ let clicks = "";
 let body = $("body");
 
 document.addEventListener("keyup", (e) => {
-  console.log(e.key);
   clicks += e.key;
-  console.log(clicks);
   if (e.key == " ") clicks = "";
+  console.log(clicks);
   if (clicks == "dark") {
     body.classList.toggle("dark-mode");
     clicks = "";
