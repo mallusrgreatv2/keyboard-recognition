@@ -4,18 +4,18 @@ body {
     justify-content: center;
     align-items: center;
     text-align: center;
-    background-color: white;
-    color: black;
-}
-.dark-mode {
     background-color: #2e2e2e;
     color: white;
+}
+.white-mode {
+    background-color: white;
+    color: black;
 }
 #items {
     margin-top: 15%;
     font-size: 65px;
 }
-.no {
+.clicked {
     margin-top: 73px;
     font-size: 45px;
 }

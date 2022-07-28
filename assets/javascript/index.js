@@ -1,7 +1,6 @@
-// TODO: Play audio when milestone reached
 
 const keys = getKeys();
-const no = $(".no");
+const clicked = $(".clicked");
 const items = $("#items");
 const global = $("html");
 const err = $(".err");
@@ -9,8 +8,8 @@ const totalclicks = $(".total");
 let time = 0;
 let totalClicks = 0;
 setInterval(() => {
-  increment(time);
-  no.innerHTML = `You haven't clicked for ${time} second${
+  time++;
+  clicked.innerHTML = `You haven't clicked for ${time} second${
     time == 1 ? "" : "s"
   }.`;
 }, 1000);
@@ -19,12 +18,18 @@ let body = $("body");
 
 document.addEventListener("keyup", (e) => {
   clicks += e.key;
+  const rev = clicks.split("").reverse();
   if (e.key == " ") clicks = '';
   console.log(clicks);
-  if (clicks == "dark") {
-    body.classList.toggle("dark-mode");
+  if (clicks == "white" || clicks.includes("white")) {
+    body.classList.toggle("white-mode");
     clicks = '';
   }
+  if (clicks == "dark"|| (clicks.includes("dark") && rev[0]+rev[1]+rev[2]+rev[3] == "dark")) {
+    body.classList.remove("white-mode");
+    clicks = '';
+  }
+
 
   let key = e.key + e.location;
   items.innerHTML = `Button Clicked: <br><code>${keys[key] || e.key}</code>`;
@@ -41,7 +46,7 @@ document.addEventListener("mousedown", (e) => {
   totalclicks.innerHTML = `You have ${totalClicks} total click${generateS(totalClicks)}`;
 });
 let darktext = $(".darktext");
-darktext.addEventListener("click", e => body.classList.toggle('dark-mode'))
+darktext.addEventListener("click", e => body.classList.toggle('white-mode'))
 
 
 
@@ -96,7 +101,7 @@ function getKeys() {
     Delete0: "Del",
     PageUp0: "PgUp",
     PageDown0: "PgDn",
-    Meta0: "Windows",
+    Meta0: "winkey",
     Shift1: "Left Shift",
     Shift2: "Right Shift",
     Control1: "Left Control",
