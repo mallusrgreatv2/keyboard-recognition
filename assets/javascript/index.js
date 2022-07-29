@@ -25,7 +25,7 @@ document.addEventListener("keyup", (e) => {
     body.classList.toggle("white-mode");
     clicks = '';
   }
-  if (clicks == "dark"|| (clicks.includes("dark") && rev[0]+rev[1]+rev[2]+rev[3] == "dark")) {
+  if (clicks == "dark"|| clicks.includes("dark")) {
     body.classList.remove("white-mode");
     clicks = '';
   }
