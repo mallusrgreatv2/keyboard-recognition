@@ -1,8 +1,5 @@
-var Name = "a"
-if (navigator.userAgent.indexOf("Win") != -1) Name = "Windows OS";
-if (navigator.userAgent.indexOf("Mac") != -1) Name = "MacOS";
-if (navigator.userAgent.indexOf("X11") != -1) Name = "UNIX OS";
-if (navigator.userAgent.indexOf("Linux") != -1) Name = "Linux OS";
+let pc = false
+if (navigator.userAgent.indexOf("Win") != -1 || navigator.userAgent.indexOf("Mac") != -1 || navigator.userAgent.indexOf("X11") != -1 || navigator.userAgent.indexOf("Linux") != -1) pc = true
 window.addEventListener('load', () => {
-    if(Name !== "a") return window.location.replace("https://recognition.netlify.app");
+    if(pc) return window.location.replace("https://recognition.netlify.app");
 })
