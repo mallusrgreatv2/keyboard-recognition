@@ -1,2 +1,2 @@
 # keyboard-recognition
-I don't fucking have time to write this readme
+I have time to write this readme but I won't
